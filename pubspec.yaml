@@ -1,0 +1,37 @@
+name: example
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.0 <4.0.0'
+dependencies:
+  build_runner:
+  cupertino_icons: ^1.0.5
+  faker: ^2.1.0
+  file_picker:
+  firebase_auth:
+  firebase_core:
+  firebase_storage:
+  flutter:
+    sdk: flutter
+  flutter_chat_types: ^3.6.1
+  flutter_chat_ui: ^1.6.8
+  flutter_firebase_chat_core:
+    path: ../
+  freezed:
+  freezed_annotation:
+  http: ^0.13.6
+  image_picker: ^0.8.7+5
+  json_annotation:
+  json_serializable:
+  mime: ^1.0.4
+  open_filex: ^4.3.2
+  path_provider: ^2.0.15
+dev_dependencies:
+  dart_code_metrics: ^5.7.3
+  flutter_lints: ^2.0.1
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
