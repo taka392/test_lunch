@@ -19,19 +19,22 @@ dependencies:
   flutter_chat_ui: ^1.6.8
   flutter_firebase_chat_core:
     path: ../
+  flutter_riverpod:
   freezed:
   freezed_annotation:
   http: ^0.13.6
   image_picker: ^0.8.7+5
-  json_annotation:
+  json_annotation: ^4.8.1
   json_serializable:
   mime: ^1.0.4
   open_filex: ^4.3.2
   path_provider: ^2.0.15
+  riverpod_annotation:
 dev_dependencies:
   dart_code_metrics: ^5.7.3
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
+  riverpod_generator:
 flutter:
   uses-material-design: true

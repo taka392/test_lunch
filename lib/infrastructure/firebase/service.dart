@@ -1,7 +1,8 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
-/// ファイアーストアと通信するクラス
 class FirestoreService {
   final db = FirebaseFirestore.instance;
 
@@ -93,7 +94,6 @@ class FirestoreService {
   /* Read 読み出し */
   Future<void> read() async {
     final doc = await db.collection('songs').doc('S07').get();
-    // 見つけた曲を文字に変換
     final song = doc.data().toString();
     debugPrint(song);
   }
@@ -114,8 +114,6 @@ class FirestoreService {
 
   /* Create 応用 1 */
   Future<void> create1() async {
-    // セキュリティルールが必要
-    // https://qiita.com/nade/items/b06761ad6dc564c01536
     await db.collection('songs').doc('S10').set(
       {
         'title': '新時代',
@@ -131,7 +129,7 @@ class FirestoreService {
         'title': '新時代',
         'artist': 'ウタ',
       },
-      SetOptions(merge: false), // 古いほうを消して上書き
+      SetOptions(merge: false),
     );
   }
 
@@ -143,7 +141,7 @@ class FirestoreService {
         'released': 2022,
         'genre': 'J-POP',
       },
-      SetOptions(merge: true), // 古いほうと合体
+      SetOptions(merge: true),
     );
   }
 
@@ -151,12 +149,10 @@ class FirestoreService {
   Future<void> read123() async {
     final snapshot = await db
         .collection('songs')
-        .where('genre', isEqualTo: 'J-POP') // J-POPのみ
-        .orderBy('released') // リリース年順
-        .limit(3) // 3曲
+        .where('genre', isEqualTo: 'J-POP')
+        .orderBy('released')
+        .limit(3)
         .get();
-
-    // 見つかった曲を全部つなげて文字にする
     final docs = snapshot.docs.map(
       (doc) => doc.data().toString(),
     );
