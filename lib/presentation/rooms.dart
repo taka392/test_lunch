@@ -29,14 +29,10 @@ class _RoomsPageState extends State<RoomsPage> {
 
   void initializeFlutterFire() async {
     try {
-      // FirebaseAuthの初期化処理
-      // authStateChangesメソッドが強すぎる
-      // 2回目のログインの場合でも、ログイン情報がストレージに保存されるため、SharedPreferenceを使用しなくても良い。.
       FirebaseAuth.instance.authStateChanges().listen((User? user) {
         setState(() {
           _user = user;
         });
-        debugPrint(_user.toString());
       });
       setState(() {
         _initialized = true;
@@ -157,10 +153,12 @@ class _RoomsPageState extends State<RoomsPage> {
                     child: const Text('No rooms'),
                   );
                 }
+
                 return ListView.builder(
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
                     final room = snapshot.data![index];
+
                     return GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
